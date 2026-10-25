@@ -1,0 +1,71 @@
+@import "tailwindcss";
+@import "@fontsource/outfit/400.css";
+@import "@fontsource/outfit/500.css";
+@import "@fontsource/outfit/700.css";
+@import "@fontsource/fraunces/600.css";
+@import "@fontsource/fraunces/700.css";
+@import "@fontsource/fraunces/600-italic.css";
+
+@theme {
+  --font-sans: "Outfit", "Avenir Next", system-ui, sans-serif;
+  --font-display: "Fraunces", "Iowan Old Style", Georgia, serif;
+  --color-ink: #141612;
+  --color-asphalt: #1c1f1a;
+  --color-panel: #262920;
+  --color-fg: #f6f1e7;
+  --color-muted: #b7b1a4;
+  --color-line: #3a3f34;
+  --color-mamak: #1f8a5b;
+  --color-kopi: #e07a3d;
+  --color-gold: #e6b325;
+}
+
+@layer base {
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+
+  html,
+  body {
+    height: 100%;
+    margin: 0;
+    overflow: hidden;
+    overscroll-behavior: none;
+    background:
+      radial-gradient(ellipse at 15% 0%, #2a3830 0%, transparent 46%),
+      radial-gradient(ellipse at 100% 90%, #3a281c 0%, transparent 42%),
+      var(--color-asphalt);
+    color: var(--color-fg);
+    font-family: var(--font-sans);
+  }
+}
+
+.safe-top {
+  padding-top: max(0.75rem, env(safe-area-inset-top));
+}
+
+.safe-bot {
+  padding-bottom: max(0.75rem, env(safe-area-inset-bottom));
+}
+
+.pop-in {
+  animation: pop-in 180ms ease-out;
+}
+
+@keyframes pop-in {
+  from {
+    transform: translateY(8px);
+    opacity: 0;
+  }
+  to {
+    transform: none;
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pop-in {
+    animation: none;
+  }
+}
